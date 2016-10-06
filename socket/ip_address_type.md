@@ -193,7 +193,7 @@ The function `ResolveIPAddr` will perform a DNS lookup on a hostname, and return
 However, hosts may have multiple IP addresses, usually from multiple network interface cards. They may also have multiple host names, acting as aliases.
 
 ```go
-func LookupHost(name string) (cname string, addrs []string, err os.Error)
+func LookupHost(name string) (addrs []string, err os.Error)
 ```
     
 One of these addresses will be labelled as the "canonical" host name. If you wish to find the canonical name, use 
