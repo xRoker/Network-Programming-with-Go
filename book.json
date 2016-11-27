@@ -6,12 +6,12 @@
         "github@2.0.x"
     ],
     "pluginsConfig": {
-            "edit-link": {
-                "base": "https://github.com/tumregels/Network-Programming-with-Go/edit/master",
-                "label": "Edit"
-            },
-            "github": {
-                "url": "https://github.com/tumregels/Network-Programming-with-Go"
-            }
+        "edit-link": {
+            "base": "https://github.com/tumregels/Network-Programming-with-Go/edit/master",
+            "label": "Edit"
+        },
+        "github": {
+            "url": "https://github.com/tumregels/Network-Programming-with-Go"
+        }
     }
 }
