@@ -46,11 +46,9 @@ Vagrant.configure("2") do |config|
   # Example for VirtualBox:
   #
   config.vm.provider "virtualbox" do |vb|
-  #   # Display the VirtualBox GUI when booting the machine
-  #   vb.gui = true
-  #
-  #   # Customize the amount of memory on the VM:
-    vb.memory = "1024"
+    vb.customize ["modifyvm", :id, "--ioapic", "on"]
+    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]  
   end
   #
   # View the documentation for the provider you are using for more
@@ -72,10 +70,11 @@ Vagrant.configure("2") do |config|
   # SHELL
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
+    sudo apt-get install -y git
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
     sudo apt-get install -y nodejs
     sudo aptitude install -y calibre
-    npm install -g gitbook-cli@2.3.0
+    sudo npm install -g gitbook-cli@2.3.0
     cd /vagrant
     make build
     # make pdf

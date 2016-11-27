@@ -5,7 +5,7 @@ SHELL := /bin/bash
 all: build
 
 prepare:
-	npm run docs:watch
+	npm run docs:prepare
 
 watch:
 	npm run docs:watch
@@ -13,7 +13,9 @@ watch:
 build:
 	npm run docs:build
 
-publish:
+publish: pdf epub mobi
+	git config --global user.name "publisher"
+	git config --global user.email "publisher@git.hub"
 	npm run docs:publish
 
 pdf:
@@ -27,6 +29,5 @@ mobi:
 
 clean:
 	rm -rf _book
-	rm -rf node_modules
-	rm *.{pdf,epub,mobi}
+	rm -f *.{pdf,epub,mobi}
 
