@@ -6,13 +6,12 @@
   "dependencies": {},
   "devDependencies": {},
   "scripts": {
-    "docs:prepare": "gitbook install",
-    "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:build": "npm run docs:prepare && rm -rf _book && gitbook build",
-    "docs:pdf": "npm run docs:prepare && gitbook pdf . ./network-programming-with-go.pdf",
-    "docs:epub": "npm run docs:prepare && gitbook epub . ./network-programming-with-go.epub",
-    "docs:mobi": "npm run docs:prepare && gitbook mobi . ./network-programming-with-go.mobi",
-    "docs:publish": "npm run docs:build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push https://github.com/tumregels/Network-Programming-with-Go gh-pages --force"
+    "gitbook:prepare": "gitbook install",
+    "gitbook:watch": "npm run gitbook:prepare && gitbook serve",
+    "gitbook:build": "npm run gitbook:prepare && rm -rf _book && gitbook build",
+    "gitbook:pdf": "npm run gitbook:build && gitbook pdf . ./network-programming-with-go.pdf",
+    "gitbook:epub": "npm run gitbook:build && gitbook epub . ./network-programming-with-go.epub",
+    "gitbook:mobi": "npm run gitbook:build && gitbook mobi . ./network-programming-with-go.mobi"
   },
   "repository": {
     "type": "git",

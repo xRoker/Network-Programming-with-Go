@@ -1,31 +1,41 @@
 SHELL := /bin/bash
 
-.PHONY: all prepare build watch publish pdf clean
+.PHONY: all prepare build watch publish pdf epub mobi clean
 
 all: build
 
 prepare:
-	npm run docs:prepare
-
-watch:
-	npm run docs:watch
+	npm run gitbook:prepare
 
 build:
-	npm run docs:build
+	npm run gitbook:build
 
-publish: pdf epub mobi
-	git config --global user.name "publisher"
-	git config --global user.email "publisher@git.hub"
-	npm run docs:publish
+watch:
+	npm run gitbook:watch
+
+publish:
+	npm run gitbook:build && \
+	gitbook pdf  . ./_book/network-programming-with-go.pdf && \
+	gitbook epub . ./_book/network-programming-with-go.epub && \
+	gitbook mobi . ./_book/network-programming-with-go.mobi && \
+	cd _book && \
+	git config --global user.name "publisher" && \
+	git config --global user.email "publisher@git.hub" && \
+	git init && \
+	git commit --allow-empty -m 'Update gh-pages' && \
+	git checkout -b gh-pages && \
+	git add . && \
+	git commit -am 'Update gh-pages' && \
+	git push https://github.com/tumregels/Network-Programming-with-Go gh-pages --force
 
 pdf:
-	npm run docs:pdf
+	npm run gitbook:pdf
 
 epub:
-	npm run docs:epub
+	npm run gitbook:epub
 
 mobi:
-	npm run docs:mobi
+	npm run gitbook:mobi
 
 clean:
 	rm -rf _book

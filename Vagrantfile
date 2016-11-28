@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
+
+  # activate x11 for publishing pdf, epub and mobi ebooks
   config.ssh.forward_x11 = true
   config.ssh.forward_agent = true
 
@@ -48,7 +50,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--ioapic", "on"]
     vb.customize ["modifyvm", :id, "--memory", "1024"]
-    vb.customize ["modifyvm", :id, "--cpus", "2"]  
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
   end
   #
   # View the documentation for the provider you are using for more
@@ -64,10 +66,6 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y git
@@ -77,7 +75,5 @@ Vagrant.configure("2") do |config|
     sudo npm install -g gitbook-cli@2.3.0
     cd /vagrant
     make build
-    # make pdf
-    make watch
   SHELL
 end
