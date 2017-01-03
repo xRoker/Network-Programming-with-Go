@@ -1,8 +1,11 @@
 SHELL := /bin/bash
 
-.PHONY: all prepare build watch publish pdf epub mobi clean
+.PHONY: all install prepare build watch publish pdf epub mobi clean
 
-all: build
+all: install build
+
+install: # install gitbook-cli
+	npm install 
 
 prepare:
 	npm run gitbook:prepare

@@ -7,3 +7,4 @@
 .vagrant/
 _book/
 node_modules/
+tmp*/

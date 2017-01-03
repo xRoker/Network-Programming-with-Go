@@ -72,8 +72,8 @@ Vagrant.configure("2") do |config|
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
     sudo apt-get install -y nodejs
     sudo aptitude install -y calibre
-    sudo npm install -g gitbook-cli@2.3.0
     cd /vagrant
+    make install
     make build
   SHELL
 end
