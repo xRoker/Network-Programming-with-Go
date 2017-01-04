@@ -11,9 +11,9 @@
     "gitbook:prepare": "gitbook install",
     "gitbook:watch": "npm run gitbook:prepare && gitbook serve",
     "gitbook:build": "npm run gitbook:prepare && rm -rf _book && gitbook build",
-    "gitbook:pdf": "npm run gitbook:build && gitbook pdf . ./network-programming-with-go.pdf",
-    "gitbook:epub": "npm run gitbook:build && gitbook epub . ./network-programming-with-go.epub",
-    "gitbook:mobi": "npm run gitbook:build && gitbook mobi . ./network-programming-with-go.mobi"
+    "gitbook:pdf": "gitbook pdf . ./_book/network-programming-with-go.pdf",
+    "gitbook:epub": "gitbook epub . ./_book/network-programming-with-go.epub",
+    "gitbook:mobi": "gitbook mobi . ./_book/network-programming-with-go.mobi"
   },
   "repository": {
     "type": "git",
