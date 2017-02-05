@@ -34,7 +34,7 @@ func main() {
 	}
 	service := os.Args[1]
 
-	udpAddr, err := net.ResolveUDPAddr("up4", service)
+	udpAddr, err := net.ResolveUDPAddr("udp4", service)
 	checkError(err)
 
 	conn, err := net.DialUDP("udp", nil, udpAddr)
@@ -54,7 +54,7 @@ func main() {
 
 func checkError(err error) {
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Fatal error ", err.Error())
+		fmt.Fprintf(os.Stderr, "Fatal error %s", err.Error())
 		os.Exit(1)
 	}
 }
@@ -77,7 +77,7 @@ import (
 func main() {
 
 	service := ":1200"
-	udpAddr, err := net.ResolveUDPAddr("up4", service)
+	udpAddr, err := net.ResolveUDPAddr("udp4", service)
 	checkError(err)
 
 	conn, err := net.ListenUDP("udp", udpAddr)
@@ -104,7 +104,7 @@ func handleClient(conn *net.UDPConn) {
 
 func checkError(err error) {
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Fatal error ", err.Error())
+		fmt.Fprintf(os.Stderr, "Fatal error %s", err.Error())
 		os.Exit(1)
 	}
 }
