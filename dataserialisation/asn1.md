@@ -250,6 +250,7 @@ import (
 	"encoding/asn1"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"net"
 	"os"
 	"time"
@@ -265,7 +266,9 @@ func main() {
 	conn, err := net.Dial("tcp", service)
 	checkError(err)
 
-	result, err := readFully(conn)
+	defer conn.Close()
+
+	result, err := ioutil.ReadAll(conn)
 	checkError(err)
 
 	var newtime time.Time
@@ -283,27 +286,9 @@ func checkError(err error) {
 		os.Exit(1)
 	}
 }
-
-func readFully(conn net.Conn) ([]byte, error) {
-	defer conn.Close()
-
-	result := bytes.NewBuffer(nil)
-	var buf [512]byte
-	for {
-		n, err := conn.Read(buf[0:])
-		result.Write(buf[0:n])
-		if err != nil {
-			if err == io.EOF {
-				break
-			}
-			return nil, err
-		}
-	}
-	return result.Bytes(), nil
-}
 ```
 
 This connects to the service given in a form such as `localhost:1200`, reads the TCP packet and decodes the ASN.1 content back into a string, which it prints.
 
 We should note that neither of these two - the client or the server - are compatible with the text-based clients and servers of the last chapter. 
-This client and server are exchanging ASN.1 encoded data values, not textual strings. 
+This client and server are exchanging ASN.1 encoded data values, not textual strings.

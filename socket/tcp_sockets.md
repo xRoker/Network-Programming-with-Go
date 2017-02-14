@@ -76,7 +76,6 @@ func main() {
 	_, err = conn.Write([]byte("HEAD / HTTP/1.0\r\n\r\n"))
 	checkError(err)
 
-	//result, err := readFully(conn)
 	result, err := ioutil.ReadAll(conn)
 	checkError(err)
 
