@@ -92,7 +92,7 @@ func checkError(err error) {
 This can then be read back in by
 
 ```go
-/* GenX509Cert
+/* ReadX509Cert
  */
 
 package main
