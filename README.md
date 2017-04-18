@@ -2,7 +2,7 @@
 
 An e-book on building network applications using the Google Go programming language (Golang)
 
-This book is hosted on [gitbook.com](https://www.gitbook.com/book/jannewmarch/network-programming-with-go-golang-/details) and on [github-pages](http://tumregels.github.io/Network-Programming-with-Go/). 
+This book is hosted on [github-pages](http://tumregels.github.io/Network-Programming-with-Go/). 
 
 Ebook can be downloaded as [pdf](https://github.com/tumregels/Network-Programming-with-Go/raw/gh-pages/network-programming-with-go.pdf), [epub](https://github.com/tumregels/Network-Programming-with-Go/raw/gh-pages/network-programming-with-go.epub) and [mobi](https://github.com/tumregels/Network-Programming-with-Go/raw/gh-pages/network-programming-with-go.mobi).
 
