@@ -1,0 +1,19 @@
+FROM ubuntu:trusty
+
+WORKDIR /app
+
+ADD . /app
+
+RUN apt-get update -yq && apt-get upgrade -yq && \
+apt-get install -yq libssl-dev git curl make nano
+
+RUN apt-get install -yq nodejs && \
+apt-get install -yq aptitude && aptitude install -yq calibre
+
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+
+RUN make install && make build
+
+EXPOSE 4000
+
+CMD ["make","watch"]
