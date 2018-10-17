@@ -1,6 +1,6 @@
 ## Go RPC
 
-Go's RPC is so far unique to Go. It is different to the other RPC systems, so a Go client will only talk to a Go server. It uses the Gob serialisation system discussed in chapter X, which defines the data types which can be used.
+Go's RPC is so far unique to Go. It is different to the other RPC systems, so a Go client will only talk to a Go server. It uses the Gob serialisation system discussed in "Chapter 4 Data serialisation - The gob package", which defines the data types which can be used.
 
 RPC systems generally make some restrictions on the functions that can be called across the network. This is so that the RPC system can properly determine what are value arguments to be sent, what are reference arguments to receive answers, and how to signal errors.
 
