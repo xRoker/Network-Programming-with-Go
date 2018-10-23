@@ -23,8 +23,8 @@ We shall follow the example given in the Go documentation, as this illustrates t
 The two values to be manipulated are given in a structure:
 
 ```go
-type Values struct {
-    X, Y int
+type Args struct {
+	A, B int
 }
 ```
     
