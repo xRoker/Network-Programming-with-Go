@@ -39,4 +39,5 @@ publish: build pdf epub mobi
 clean:
 	rm -rf _book
 	rm -rf node_modules
+	rm -rf tmp*
 
