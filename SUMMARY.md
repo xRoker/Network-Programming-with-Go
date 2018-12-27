@@ -33,7 +33,7 @@
     * [Raw sockets and the type IPConn](socket/raw_sockets_and_the_type_ipconn.md)
 * [Data Serialisation](dataserialisation/README.md)
     * [Mutual agreement](dataserialisation/mutual_agreement.md)
-    * [Self-describing data](dataserialisation/self-describing_data.md)
+    * [Self-describing data](dataserialisation/self_describing_data.md)
     * [ASN.1](dataserialisation/asn1.md)
     * [JSON](dataserialisation/json.md)
     * [The gob package](dataserialisation/the_gob_package.md)
