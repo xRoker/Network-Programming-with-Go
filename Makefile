@@ -41,3 +41,16 @@ clean:
 	rm -rf node_modules
 	rm -rf tmp*
 
+# build docker image
+dockbuild:
+	docker build -t gitbook .
+
+# use x11 for publishing pdf, epub and mobi ebooks, tested on ubuntu 16.04. \
+Running `make dockrun` will create a container, build the gitbook and attach a terminal, \
+to run other commands such as `make watch`, `make publish`.
+dockrun:
+	docker run -ti --rm -e DISPLAY=${DISPLAY} \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-v ${HOME}/.Xauthority:/root/.Xauthority \
+	-v ${PWD}:/app/gitbook \
+	--net=host gitbook /bin/bash -c "make install && make build && bash"
