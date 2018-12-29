@@ -53,4 +53,4 @@ dockrun:
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v ${HOME}/.Xauthority:/root/.Xauthority \
 	-v ${PWD}:/app/gitbook \
-	--net=host gitbook /bin/bash -c "make install && make build && bash"
+	--net=host gitbook /bin/bash -c "make build && bash"
