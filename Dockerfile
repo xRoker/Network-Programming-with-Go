@@ -12,6 +12,7 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node
 # ignore gpg key exit status
 RUN add-apt-repository -y ppa:jonathonf/calibre; exit 0
 
+# install calibre v3.29
 RUN apt-get update && apt-get install -y calibre
 
 RUN npm install -g gitbook-cli@2.3.0
@@ -19,14 +20,13 @@ RUN npm install -g gitbook-cli@2.3.0
 # Replace 1000 with your user / group id
 RUN export uid=1000 gid=1000 && \
     mkdir -p /app/gitbook && \
-    mkdir -p /etc/sudoers.d && \
-    echo "dev:x:${uid}:${gid}:Dev,,,:/app:/bin/bash" >> /etc/passwd && \
-    echo "dev:x:${uid}:" >> /etc/group && \
-    echo "dev ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/dev && \
-    chmod 0440 /etc/sudoers.d/dev && \
+    echo "docker:x:${uid}:${gid}:Docker,,,:/app:/bin/bash" >> /etc/passwd && \
+    echo "docker:x:${uid}:" >> /etc/group && \
+    echo "docker ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/docker && \
+    chmod 0440 /etc/sudoers.d/docker && \
     chown ${uid}:${gid} -R /app
 
-USER dev
+USER docker
 
 RUN gitbook fetch 3.0.x
 
