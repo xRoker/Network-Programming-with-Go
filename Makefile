@@ -52,5 +52,5 @@ dockrun:
 	docker run -ti --rm -e DISPLAY=${DISPLAY} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v ${HOME}/.Xauthority:/root/.Xauthority \
-	-v ${PWD}:/app/gitbook \
+	-v ${shell pwd}:/app/gitbook \
 	--net=host gitbook /bin/bash -c "make build && bash"
