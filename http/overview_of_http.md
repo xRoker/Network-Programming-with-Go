@@ -14,7 +14,7 @@ This view of resources means that the HTTP protocol can be fairly simple and str
 
 HTTP is a stateless, connectionless, reliable protocol. In the simplest form, each request from a user agent is handled reliably and then the connection is broken. Each request involves a separate TCP connection, so if many resources are required (such as images embedded in an HTML page) then many TCP connections have to be set up and torn down in a short space of time.
 
-Thera are many optimisations in HTTP which add complexity to the simple structure, in order to create a more efficient and reliable protocol.
+There are many optimisations in HTTP which add complexity to the simple structure, in order to create a more efficient and reliable protocol.
 
 ### Versions
 
