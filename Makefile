@@ -1,31 +1,35 @@
+.DEFAULT_GOAL:=help
 SHELL := /bin/bash
 
 .PHONY: all install prepare build watch publish pdf epub mobi clean dockbuild dockrun
 
-all: install build
+help:  ## Use `make help` to see this help
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-install: # install gitbook-cli
+all: install build  ## install all libraries and build the book
+
+install:  ## install gitbook-cli
 	npm install 
 
-prepare:
+prepare:  ## run gitbook install command
 	npm run gitbook:prepare
 
-build:
+build:  ## build the book
 	npm run gitbook:build
 
-watch:
+watch:  ## watch for changes
 	npm run gitbook:watch
 
-pdf:
+pdf:  ## generate pdf
 	npm run gitbook:pdf
 
-epub:
+epub: ## generate epub
 	npm run gitbook:epub
 
-mobi:
+mobi:  ## generate mobi
 	npm run gitbook:mobi
 
-publish: build pdf epub mobi
+publish: build pdf epub mobi  ## publish gitbook on github pages
 	cd _book && \
 	git config --global user.name "publisher" && \
 	git config --global user.email "publisher@git.hub" && \
@@ -36,19 +40,19 @@ publish: build pdf epub mobi
 	git commit -am 'update gh-pages' && \
 	git push https://github.com/tumregels/Network-Programming-with-Go gh-pages --force
 
-clean:
+clean:  ## remove all libraries and cached files
 	rm -rf _book
 	rm -rf node_modules
 	rm -rf tmp*
 
-# build docker image
-dockbuild:
+
+dockbuild:  ## build docker image
 	docker build -t gitbook .
 
 # use x11 for publishing pdf, epub and mobi ebooks, tested on ubuntu 16.04. \
 `make dockrun` will create a container, build the gitbook and attach a terminal, \
 to run other commands such as `make watch`, `make publish`.
-dockrun:
+dockrun:  ## use docker to build gitbook
 	docker run -ti --rm -e DISPLAY=${DISPLAY} \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v ${HOME}/.Xauthority:/root/.Xauthority \
