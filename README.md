@@ -1,6 +1,6 @@
 # Network Programming with Go by Jan Newmarch
 
-An e-book on building network applications using the Google Go programming language (Golang)
+An e-book on building network applications using Google's Go programming language (Golang)
 
 This book is hosted on [github-pages](http://tumregels.github.io/Network-Programming-with-Go/). 
 
